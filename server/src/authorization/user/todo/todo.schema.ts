@@ -1,6 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document, SchemaTypes } from 'mongoose';
-import User from 'src/authorization/user/user.schema';
+import User from '../user.schema';
 
 @Schema({ collection: 'todos' })
 export class Todo extends Document {

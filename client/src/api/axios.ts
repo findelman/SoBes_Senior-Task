@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const _axios = axios.create({
-  baseURL: `${process.env.baseUrl}`,
+  baseURL: `${process.env.mainURL}`,
   headers: {
     "Content-Type": "application/json",
   },

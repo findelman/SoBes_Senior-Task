@@ -8,7 +8,7 @@ import { AuthModule } from './authorization/auth.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://greofresh:sggfBsgoURLSTN8Y@bccadmin.rfmguga.mongodb.net/sobes?retryWrites=true&w=majority',
+      `${MONGODB_URI}`,
     ),
     AuthModule,
   ],

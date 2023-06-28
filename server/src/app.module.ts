@@ -4,15 +4,11 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './authorization/auth.module';
 
-
 @Module({
-  imports: [
-    MongooseModule.forRoot(
-      `${MONGODB_URI}`,
-    ),
-    AuthModule,
-  ],
+  imports: [MongooseModule.forRoot(`${process.env.MOGO_DBt}`), AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
+// test

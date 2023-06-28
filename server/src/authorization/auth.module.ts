@@ -5,8 +5,8 @@ import { AuthController } from './auth.controller';
 import { AuthStrategy } from './auth.strategy';
 import { AuthService } from './auth.service';
 import { UserModule } from './user/user.module';
-import { TodoModule } from 'src/authorization/user/todo/todo.module';
 import { JwtStrategy } from './jwt.strategy';
+import { TodoModule } from './user/todo/todo.module';
 
 @Module({
   imports: [

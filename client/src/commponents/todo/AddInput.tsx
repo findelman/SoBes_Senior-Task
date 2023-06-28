@@ -10,7 +10,7 @@ export const StyledIconButton = styled(IconButton)`
   color: black;
 `;
 
-export const AddInput = memo(() => {
+export const AddInput = memo(function AddInput() {
   const [newTodoTitle, setNewTodoTitle] = useState("");
   const { createTodo } = useTodoList();
 

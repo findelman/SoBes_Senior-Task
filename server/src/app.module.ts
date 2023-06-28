@@ -10,5 +10,3 @@ import { AuthModule } from './authorization/auth.module';
   providers: [AppService],
 })
 export class AppModule {}
-
-// test

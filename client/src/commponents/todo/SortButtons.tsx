@@ -5,7 +5,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const StyledToggleButton = styled(ToggleButton)`
-  padding: 10px 0px;
+  padding: 7px 0px;
   border-radius: 10px;
   border: 1px solid #ccc;
 `;

@@ -20,6 +20,8 @@ export const TodoItem: React.FC<ITodoItem> = ({
   deleteTodo,
   toggleTodo,
 }) => {
+  const formattedDate = new Date(todo.createdAt).toLocaleString();
+
   return useObserver(() => (
     <ListItem button disableGutters key={todo._id}>
       <Checkbox
@@ -27,7 +29,7 @@ export const TodoItem: React.FC<ITodoItem> = ({
         disableRipple
         onClick={() => toggleTodo(todo)}
       />
-      <ListItemText primary={todo.title} secondary={todo.createdAt} />
+      <ListItemText primary={todo.title} secondary={formattedDate} />
       <ListItemSecondaryAction>
         <StyledIconButton
           edge="end"

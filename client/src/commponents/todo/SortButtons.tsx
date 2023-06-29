@@ -5,11 +5,14 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const StyledToggleButton = styled(ToggleButton)`
-  padding: 5px 0px;
+  padding: 10px 0px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 `;
 
 const ToggleWrapper = styled.div`
   display: grid;
+  gap: 5px;
   grid-template-columns: repeat(3, 1fr);
 `;
 

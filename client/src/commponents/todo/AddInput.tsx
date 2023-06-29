@@ -20,13 +20,17 @@ export const AddInput = memo(function AddInput() {
         fullWidth
         label="Добавить"
         value={newTodoTitle}
-        onChange={(e) => setNewTodoTitle(e.target.value)}
+        onChange={(e) => {
+          setNewTodoTitle(e.target.value)
+        }}
       />
       <StyledIconButton
         aria-label="add"
         onClick={() => {
-          createTodo(newTodoTitle);
-          setNewTodoTitle("");
+          if(newTodoTitle.trim() !== ''){
+            createTodo(newTodoTitle);
+            setNewTodoTitle("");
+          }
         }}
       >
         &#43;

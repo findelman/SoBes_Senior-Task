@@ -3,7 +3,8 @@ import Cookies from "js-cookie";
 
 const _axios = axios.create({
   // vercel env crash
-  baseURL: `${process.env.MAIN_URL}`,
+//   baseURL: `${process.env.MAIN_URL}`,
+  baseURL: `https://so-bes-senior-task.vercel.app`,
   headers: {
     "Content-Type": "application/json",
   },

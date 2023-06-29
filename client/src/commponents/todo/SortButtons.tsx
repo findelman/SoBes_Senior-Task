@@ -5,13 +5,19 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const StyledToggleButton = styled(ToggleButton)`
-padding: 5px 0px; 
+  padding: 5px 0px;
 `;
 
-const ToggleWrapper = styled(ToggleButtonGroup)`
+const ToggleWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 `;
+
+const BUTTON_DATA = [
+  { value: "all", label: "Все" },
+  { value: "completed", label: "Выполненные" },
+  { value: "createdAt", label: "По дате" },
+];
 
 export const SortButtons = () => {
   const { sortByCreatedAt, sortByCompleted, resetSort } = useTodoList();
@@ -34,34 +40,17 @@ export const SortButtons = () => {
   };
 
   return (
-    <ToggleWrapper
-      value={sortType}
-      exclusive
-      onChange={(event: React.MouseEvent<HTMLElement>, newValue: string) =>
-        handleSort(newValue)
-      }
-    >
-      <StyledToggleButton
-        value="all"
-        selected={sortType === "all"}
-        onClick={() => handleSort("all")}
-      >
-        Все
-      </StyledToggleButton>
-      <StyledToggleButton
-        value="completed"
-        selected={sortType === "completed"}
-        onClick={() => handleSort("completed")}
-      >
-        Выполненные
-      </StyledToggleButton>
-      <StyledToggleButton
-        value="createdAt"
-        selected={sortType === "createdAt"}
-        onClick={() => handleSort("createdAt")}
-      >
-        По дате
-      </StyledToggleButton>
+    <ToggleWrapper>
+      {BUTTON_DATA.map((button) => (
+        <StyledToggleButton
+          key={button.value}
+          value={button.value}
+          selected={sortType === button.value}
+          onClick={() => handleSort(button.value)}
+        >
+          {button.label}
+        </StyledToggleButton>
+      ))}
     </ToggleWrapper>
   );
 };

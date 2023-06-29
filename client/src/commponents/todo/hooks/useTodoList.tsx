@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import _axios from "@/api/axios";
 import rootStore from "@/store/RootStore";
 import { useEffect } from "react";
@@ -12,7 +12,19 @@ export interface ITodo {
 }
 
 export const useTodoList = () => {
-  const { todos, setTodos, addTodo, removeTodo, _toggleTodo,sortByCreatedAt,sortByCompleted,resetSort } = rootStore.todos;
+  const {
+    todos,
+    setTodos,
+    addTodo,
+    removeTodo,
+    _toggleTodo,
+    sortByCreatedAt,
+    sortByCompleted,
+    resetSort,
+    setSearchText,
+    filterTodos,
+    searchText,
+  } = rootStore.todos;
 
   useEffect(() => {
     (async () => {
@@ -58,5 +70,16 @@ export const useTodoList = () => {
     }
   };
 
-  return { todos, createTodo, deleteTodo, toggleTodo,sortByCreatedAt,sortByCompleted,resetSort };
+  return {
+    todos,
+    createTodo,
+    deleteTodo,
+    toggleTodo,
+    sortByCreatedAt,
+    sortByCompleted,
+    resetSort,
+    setSearchText,
+    filterTodos,
+    searchText,
+  };
 };

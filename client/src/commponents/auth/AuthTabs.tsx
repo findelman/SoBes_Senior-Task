@@ -19,3 +19,4 @@ export const AuthTabs: React.FC<IAuthTabs> = ({ value, onChange }) => {
     </Tabs>
   );
 };
+

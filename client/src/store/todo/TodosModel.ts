@@ -5,7 +5,9 @@ import { ITodo } from "@/commponents/todo/hooks/useTodoList";
 const TodosModel = types
   .model("Todos", {
     todos: types.array(TodoModel),
+    originalTodos: types.array(TodoModel),
     sortType: types.optional(types.string, ""),
+    searchText: types.optional(types.string, ""),
   })
   .actions((self) => ({
     addTodo: (todo: typeof TodoModel.Type) => {
@@ -25,6 +27,7 @@ const TodosModel = types
     },
     setTodos: (todos: ITodo[]) => {
       self.todos.replace(todos);
+      self.originalTodos.replace(todos);
     },
     removeTodo: (todoId: string) => {
       self.todos.replace(self.todos.filter((item) => item._id !== todoId));
@@ -48,6 +51,21 @@ const TodosModel = types
         self.todos.slice().sort((a, b) => (a.completed ? -1 : 1))
       );
       self.sortType = "completed";
+    },
+    filterTodos: () => {
+      const searchQuery = self.searchText.trim().toLowerCase();
+      if (searchQuery === "") {
+        self.todos.replace(self.originalTodos.map(todo => getSnapshot(todo)));
+      } else {
+        const filteredTodos = self.originalTodos.filter((todo) =>
+          todo.title.toLowerCase().includes(searchQuery)
+        );
+        self.todos.replace(filteredTodos.map(todo => getSnapshot(todo)));
+      }
+    },
+
+    setSearchText: (text: string) => {
+      self.searchText = text;
     },
     resetSort: () => {
       if (self.sortType !== "") {
